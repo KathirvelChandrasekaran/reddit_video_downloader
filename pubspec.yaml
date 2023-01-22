@@ -4,12 +4,15 @@ version: 0.0.1
 homepage:
 
 environment:
-  sdk: '>=2.18.6 <3.0.0'
+  sdk: ">=2.18.6 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  http: ^0.13.5
+  ffmpeg_kit_flutter: ^5.1.0
+  permission_handler: ^10.2.0
 
 dev_dependencies:
   flutter_test:
