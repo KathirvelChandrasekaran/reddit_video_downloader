@@ -34,9 +34,7 @@ class _MyAppState extends State<MyApp> {
         print('Operation Successful');
       } else {
         value.getAllLogs().then((value) => {
-              value.forEach((element) {
-                print(element.getMessage());
-              })
+              for (final log in value) {print(log)}
             });
       }
     });
