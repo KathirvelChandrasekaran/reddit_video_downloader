@@ -1,3 +1,3 @@
-## 0.0.1
+## 0.1.1
 
-* TODO: Describe initial release.
+* Video download feature for Android, iOS and MacOS
