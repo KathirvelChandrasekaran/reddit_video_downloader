@@ -2,7 +2,6 @@
 
 [![pub package][pub_badge]][pub_link]
 [![License: MIT][license_badge]][license_link]
-[![style: very good analysis][very_good_analysis_badge]][very_good_analysis_badge_link]
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/kathirvel)
 
