@@ -1,39 +1,64 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Reddit Video Downloader
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+[![pub package][pub_badge]][pub_link]
+[![License: MIT][license_badge]][license_link]
+[![style: very good analysis][very_good_analysis_badge]][very_good_analysis_badge_link]
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/kathirvel)
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A dart package to download the video from the Reddit post. Currently package support Android, iOS and MacOS platforms.
 
-## Features
+## 🚀 Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+`downloadRedditVideo()`
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+### downloadRedditVideo(videoURL, videoLocation, videoTitle)
 
 ```dart
-const like = 'sample';
+import 'package:reddit_video_downloader/reddit_video_downloader.dart';
+
+downloadVideo() async {
+    final reddit = RedditVideDownloader();
+    await reddit
+        .downloadRedditVideo(
+            videoUrl:
+                'https://www.reddit.com/r/SipsTea/comments/vmf0zx/how_different_animals_fight/',
+            videoLocation: '/storage/emulated/0/Download',
+            videoTitle: 'test')
+        .then((value) async {
+      final startTime = value.getStartTime();
+      print('Start Time: $startTime');
+      final endTime = await value.getEndTime();
+      print('End Time: $endTime');
+      final duration = await value.getDuration();
+      print('Duration: $duration');
+
+      // returnCode is 0 if the operation was successful
+      final returnCode = await value.getReturnCode();
+      if (returnCode == 0) {
+        print('Operation Successful');
+      } else {
+        value.getAllLogs().then((value) => {
+              value.forEach((element) {
+                print(element.getMessage());
+              })
+            });
+      }
+    });    
 ```
 
-## Additional information
+### Completed Features ✅
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+- ✅ Support for Android  
+- ✅ Support for iOS  
+- ✅ Support for MacOS  
+- 🕐 Support for Windows - On progress  
+- 🕐 Support for Linux - On Progress
+- 🕐 Support for Web - On Progress
+
+[license_link]: https://opensource.org/licenses/MIT
+[license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
+[pub_badge]: https://img.shields.io/pub/v/reddit_video_downloader.svg
+[pub_link]: https://pub.dev/packages/reddit_video_downloader
+[very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
+[very_good_analysis_badge_link]: https://pub.dev/packages/very_good_analysis
