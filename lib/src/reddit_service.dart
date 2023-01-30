@@ -6,6 +6,29 @@ import 'package:http/http.dart' as http;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:reddit_video_downloader/src/utils.dart';
 
+/// RedditVideDownloader
+///
+/// This class is used to download reddit videos
+///
+/// @param videoUrl - The url of the reddit video
+/// @param videoTitle - The title of the reddit video
+/// @param videoLocation - The location where the video will be saved
+///
+/// @return FFmpegSession - The FFmpeg session
+///
+/// @throws Exception - Throws an exception if the video url, title or location is empty
+/// @throws Exception - Throws an exception if the video url is invalid
+/// @throws Exception - Throws an exception if the video title is invalid
+/// @throws Exception - Throws an exception if the video location is invalid
+/// @throws Exception - Throws an exception if the permission is denied
+///
+/// @example
+///
+/// RedditVideDownloader().downloadRedditVideo(
+/// videoUrl: "https://www.reddit.com/r/aww/comments/psq7x7/this_is_what_happens_when_you_try_to_take_a_nap/",
+/// videoTitle: "This is what happens when you try to take a nap",
+/// videoLocation: "/storage/emulated/0/Download"
+/// );
 class RedditVideDownloader {
   Future<FFmpegSession> downloadRedditVideo({
     required String videoUrl,
@@ -23,6 +46,7 @@ class RedditVideDownloader {
     if (response.statusCode == 200) {
       res = convert.jsonDecode(response.body);
 
+      // Check if the video url, title and location are empty
       if (await requestPermission(Permission.storage) == false) {
         throw Exception('Permission Denied');
       } else {
@@ -40,7 +64,7 @@ class RedditVideDownloader {
         String fullVideoURL = url.origin + url.path;
 
         String audioURL = "";
-
+        // Convert the video url to audio url
         if (fullVideoURL.contains("360")) {
           audioURL = fullVideoURL.replaceAll('360', "audio");
         } else if (fullVideoURL.contains("240")) {
@@ -60,11 +84,12 @@ class RedditVideDownloader {
         if (fullVideoURL == "") {
           throw Exception('Failed to parse video url');
         }
+        // Check if the video is a gif
         isGif = res[0]['data']['children'].first['data']['secure_media']
                 ['reddit_video']['is_gif']
             ? true
             : false;
-
+        // Download the video
         session = isGif
             ? await FFmpegKit.execute(
                 "-i $fullVideoURL -c copy -y $videoLocation/$videoTitle.mp4")

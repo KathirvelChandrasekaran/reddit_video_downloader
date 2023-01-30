@@ -57,5 +57,3 @@ downloadVideo() async {
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [pub_badge]: https://img.shields.io/pub/v/reddit_video_downloader.svg
 [pub_link]: https://pub.dev/packages/reddit_video_downloader
-[very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
-[very_good_analysis_badge_link]: https://pub.dev/packages/very_good_analysis

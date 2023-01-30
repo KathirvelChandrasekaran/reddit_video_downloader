@@ -1,7 +1,7 @@
 name: reddit_video_downloader
 description: A new Flutter package which can download videos from reddit. Currently only supports Android, iOS and MacOS
 issue_tracker: https://github.com/KathirvelChandrasekaran/reddit_video_downloader/issues
-version: 0.1.2
+version: 0.1.3
 homepage: https://github.com/KathirvelChandrasekaran/reddit_video_downloader
 repository: https://github.com/KathirvelChandrasekaran/reddit_video_downloader
 
